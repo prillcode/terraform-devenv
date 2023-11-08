@@ -13,14 +13,15 @@ After cloning this repo to your local machine...
 1) **Run >** `terraform init` in the working directory 
     - This command installs terraform as defined in **providers.tf**
     - **/.terraform** directory will be created with terraform installed
-    - Now in **main.tf** you see all the aws resources that will be created. These were created one at a time following above video steps.
 
 3) **Run >** `terraform plan`
     - This command shows the resources that will be created in whatever AWS account you have connected to.
-    - In may help to run each one-by-one as in video, or try all at once and correct any errors
-    - See notes on created in the aws_keypair at the bottom of **main.tf**
+    - Resources are created based on comparison of terraform.tfstate (vs) those specified in **main.tf**
 
 4) **Run >** `terraform apply`
+    - This command actually creates the resources shown in the terraform plan.
+    - You have a chance to 'confirm' before resources are actually created.
+    - Resources to be created are specified in **main.tf**, but only those not already in terraform.tfstate file will be created (as mentioned above).
 
 ### providers.tf
 
