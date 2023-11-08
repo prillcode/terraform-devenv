@@ -8,6 +8,19 @@ Followed along with this video: [Learn Terraform (and AWS) by Building a Dev Env
 
 ## Getting Started
 
+After cloning this repo to your local machine...
+
+1) cd into that directory in a terminal (ex: c:\your-repo-location\terraform-devenv)
+2) **Run >** terraform init
+    - This command installs terraform as defined in **providers.tf**
+    - **/.terraform** directory will be created with terraform installed
+    - Now in **main.tf** you see all the aws resources that will be created. These were created one at a time following above video steps.
+3) **Run >** terraform plan
+    - This command shows the resources that will be created in whatever AWS account you have connected to.
+    - In may help to run each one-by-one as in video, or try all at once and correct any errors
+    - See notes on created in the aws_keypair at the bottom of main.tf
+
+
 ### providers.tf
 
 - Edit providers.tf as needed to match the AWS account you wish to connect to  
@@ -18,15 +31,15 @@ Followed along with this video: [Learn Terraform (and AWS) by Building a Dev Env
 
 ### main.tf
 
-- AWS resources are added by this file.
+- (9) AWS resources are added by this file.
   - vpc 
   - public subnet
   - internet gateway
   - public route table
   - default route
-  - route table association between route table and the subnet
+  - route table association (between route table and subnet)
   - security group to the vpc with ingress/egress
-  - generate keypair for ec2 access
+  - generate keypair (for ec2 access)
   - spin up EC2 instance with AMI referenced by datasources.tf
 
 ### datasources.tf
@@ -36,4 +49,10 @@ Followed along with this video: [Learn Terraform (and AWS) by Building a Dev Env
 
 ### Cleanup
 
-- Be sure to run 'terraform destroy' to get rid of all resources at the end!
+When you are done with this project and no longer want the resources sitting in your AWS account:
+
+- **Run >** terraform destroy
+  - This command gets rid of all resources created above so you don't have unexpected charges in the AWS account.
+  - You will see the resources effected before they are really destroyed, then you confirm.
+
+  
